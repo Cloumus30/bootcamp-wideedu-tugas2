@@ -12,4 +12,24 @@
     <welcome-file>default.xhtml</welcome-file>
   </welcome-file-list>
   
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>admin_security</web-resource-name>
+  		<url-pattern>/products/*</url-pattern>
+  	</web-resource-collection>
+  	
+  	<auth-constraint>
+  		<role-name>admin_role</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  
+  <login-config>
+  	<auth-method>BASIC</auth-method>
+  	<realm-name>file</realm-name>
+  </login-config>
+  
+  <security-role>
+   <role-name>admin_role</role-name>
+  </security-role>
+  
 </web-app>

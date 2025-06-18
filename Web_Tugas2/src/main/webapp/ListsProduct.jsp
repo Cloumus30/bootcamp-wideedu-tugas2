@@ -73,7 +73,7 @@ body{
 	<script>
 		// Formate Number with thousan separator
 		
-		function addToCartHandle(formId){
+		async function addToCartHandle(formId){
 			const form = document.getElementById("form-product"+formId);
 			const formData = new FormData(form);
 			// Validate Quantity
@@ -82,13 +82,16 @@ body{
 				alert("Quantity Value must be more than 0");
 			}else{
 				const jsonForm = JSON.stringify(Object.fromEntries(formData));
-				fetch("product-list?action=order-item-session", {
+				const res = await fetch("product-list?action=order-item-session", {
 					method: "POST",
 					headers: {
 					    "Content-Type": "application/json",
 					  },
 					body: jsonForm,
-				});
+				})
+				if(res.status == 200){
+					alert("Success add Product to Cart");
+				}
 			}
 		}
 	</script>

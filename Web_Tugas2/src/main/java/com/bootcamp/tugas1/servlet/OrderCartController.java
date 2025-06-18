@@ -72,10 +72,6 @@ public class OrderCartController extends HttpServlet {
 				request.setAttribute("orderItems", orderItems);
 				dispatcherName = "ProductCart.jsp";
 			}else {
-				HttpSession session = request.getSession();
-				session.setAttribute("customer_name", "Cloudias");
-				session.setAttribute("address", "Jawa Timur Indonesia");
-				
 				ProductService productService = new ProductService();
 				List<Product> products = productService.findAll();
 				
@@ -90,6 +86,7 @@ public class OrderCartController extends HttpServlet {
 		if(dispatcherName !="") {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(dispatcherName);
 			dispatcher.forward(request, response);
+			return;
 		}
 		
 	}
@@ -130,8 +127,6 @@ public class OrderCartController extends HttpServlet {
 					int result = orderService.insertOrder(order);
 					if(result > 0) {
 						session.removeAttribute("orderItems");
-						session.removeAttribute("customer_name");
-						session.removeAttribute("address");
 					}
 				} catch (NamingException | SQLException e) {
 					// TODO Auto-generated catch block
