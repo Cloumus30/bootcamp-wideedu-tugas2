@@ -101,7 +101,7 @@ public class ProductController extends HttpServlet {
 			} catch (SQLException | NamingException e) {
 				e.printStackTrace();
 			}
-			dispatcherName = "ProductList.jsp";
+			dispatcherName = "ProductListCatalog.jsp";
 		}
 		if(!dispatcherName.equals("")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(dispatcherName);
