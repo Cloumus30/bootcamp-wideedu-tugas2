@@ -76,7 +76,7 @@
 						<c:out value="1"></c:out>
 					</td>
 					<td>
-						<c:out value="${orderItem.value.product_name}"></c:out>
+						<c:out value="${orderItem.value.productName}"></c:out>
 					</td>
 					<td>
 						<c:out value="${orderItem.value.type}"></c:out>

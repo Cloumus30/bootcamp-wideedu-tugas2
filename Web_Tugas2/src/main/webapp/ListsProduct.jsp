@@ -48,7 +48,7 @@ body{
 					<div style="margin-bottom: 8px;">
 						<label >Type: </label>
 						<select name="type" disabled>
-							<option selected value="${product.type_id}">${product.type.name}</option>
+							<option selected value="${product.typeId}">${product.type.name}</option>
 						</select>
 						<input type="hidden" readonly value="${product.type.name}" name="type">
 					</div>

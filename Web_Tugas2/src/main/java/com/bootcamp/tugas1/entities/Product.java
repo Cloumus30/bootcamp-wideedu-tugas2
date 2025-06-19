@@ -1,37 +1,37 @@
-package com.bootcamp.tugas1.repositories;
+package com.bootcamp.tugas1.entities;
 
 import java.util.List;
 
 public class Product {
-	int id;
-	String name;
-	double price;
-	Type type;
-	int type_id;
+	private int id;
+	private String name;
+	private double price;
+	private Type type;
+	private int typeId;
 	
 	
 	
-	public Product(int id, String name, double price, int type_id) {
+	public Product(int id, String name, double price, int typeId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
-		this.type_id = type_id;
+		this.typeId = typeId;
 	}
 	
-	public Product(String name, double price, int type_id) {
+	public Product(String name, double price, int typeId) {
 		super();
 		this.name = name;
 		this.price = price;
-		this.type_id = type_id;
+		this.typeId = typeId;
 	}
 	
-	public Product(int id, String name, double price, int type_id, Type type) {
+	public Product(int id, String name, double price, int typeId, Type type) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
-		this.type_id = type_id;
+		this.typeId = typeId;
 		this.type = type;
 	}
 	
@@ -59,11 +59,11 @@ public class Product {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	public int getType_id() {
-		return type_id;
+	public int getTypeId() {
+		return typeId;
 	}
-	public void setType_id(int type_id) {
-		this.type_id = type_id;
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
 	}
 	
 	

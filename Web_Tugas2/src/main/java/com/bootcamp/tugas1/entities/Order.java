@@ -1,25 +1,25 @@
-package com.bootcamp.tugas1.repositories;
+package com.bootcamp.tugas1.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-	protected int id;
-	protected String customer_name;
-	protected String address;
-	protected double total;
-	protected List<OrderItem> orderItems;
+	private int id;
+	private String customerName;
+	private String address;
+	private double total;
+	private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 	
-	public Order(String customer_name, String address, List<OrderItem> orderItems) {
+	public Order(String customerName, String address) {
 		super();
-		this.customer_name = customer_name;
+		this.customerName = customerName;
 		this.address = address;
-		this.orderItems = orderItems;
 	}
 	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}
-	public void setOrderItems(List<OrderItem> orderItems) {
-		this.orderItems = orderItems;
+	public void addOrderItem(OrderItem orderItem) {
+		this.orderItems.add(orderItem);
 	}
 	public double getTotal() {
 		return total;
@@ -33,11 +33,11 @@ public class Order {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCustomer_name() {
-		return customer_name;
+	public String getCustomerName() {
+		return customerName;
 	}
-	public void setCustomer_name(String customer_name) {
-		this.customer_name = customer_name;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 	public String getAddress() {
 		return address;

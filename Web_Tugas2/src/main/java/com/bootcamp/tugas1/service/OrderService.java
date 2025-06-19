@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import javax.naming.NamingException;
 
-import com.bootcamp.tugas1.repositories.Order;
+import com.bootcamp.tugas1.entities.Order;
 import com.bootcamp.tugas1.repositories.OrderRepository;
 import com.bootcamp.tugas1.utils.DBUtil;
 

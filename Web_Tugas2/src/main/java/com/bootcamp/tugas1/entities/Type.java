@@ -1,4 +1,4 @@
-package com.bootcamp.tugas1.repositories;
+package com.bootcamp.tugas1.entities;
 
 public class Type {
 	int id;

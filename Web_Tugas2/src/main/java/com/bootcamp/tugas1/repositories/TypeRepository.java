@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bootcamp.tugas1.entities.Type;
+
 public class TypeRepository {
 	protected Connection connection;
 	

@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bootcamp.tugas1.entities.Product;
+import com.bootcamp.tugas1.entities.Type;
+
 public class ProductRepository {
 	
 	protected Connection connection;
@@ -58,7 +61,7 @@ public class ProductRepository {
 		
 		PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 		preparedStatement.setString(1, product.getName());
-		preparedStatement.setInt(2, product.getType_id());
+		preparedStatement.setInt(2, product.getTypeId());
 		preparedStatement.setDouble(3, product.getPrice());
 		result = preparedStatement.executeUpdate();
 		
@@ -72,7 +75,7 @@ public class ProductRepository {
 		
 		PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 		preparedStatement.setString(1, product.getName());
-		preparedStatement.setInt(2, product.getType_id());
+		preparedStatement.setInt(2, product.getTypeId());
 		preparedStatement.setDouble(3, product.getPrice());
 		preparedStatement.setInt(4, productId);
 		result = preparedStatement.executeUpdate();

@@ -18,9 +18,9 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
-import com.bootcamp.tugas1.repositories.Order;
-import com.bootcamp.tugas1.repositories.OrderItem;
-import com.bootcamp.tugas1.repositories.Product;
+import com.bootcamp.tugas1.entities.Order;
+import com.bootcamp.tugas1.entities.OrderItem;
+import com.bootcamp.tugas1.entities.Product;
 import com.bootcamp.tugas1.service.OrderService;
 import com.bootcamp.tugas1.service.ProductService;
 import com.google.gson.Gson;
@@ -121,7 +121,10 @@ public class OrderCartController extends HttpServlet {
 			if(orderItems != null) {
 				List<OrderItem> orderItemsList = new ArrayList<OrderItem>(orderItems.values());
 				
-				Order order = new Order(customerName, address, orderItemsList);
+				Order order = new Order(customerName, address);
+				for (OrderItem orderItem : orderItemsList) {
+					order.addOrderItem(orderItem);
+				}
 				try {
 					OrderService orderService = new OrderService();
 					int result = orderService.insertOrder(order);
@@ -170,13 +173,13 @@ public class OrderCartController extends HttpServlet {
 //       Check if orderItems hashmap has OrderItem or not
        if(orderItems.size() > 0) {
 //    	   Add Quantity orderItems if OrderItem with same product_id exists
-    	   OrderItem existingOrderItem = orderItems.get(orderItem.getProduct_id());
+    	   OrderItem existingOrderItem = orderItems.get(orderItem.getProductId());
     	   if(existingOrderItem != null) {
     		   orderItem.setQuantity(orderItem.getQuantity() + existingOrderItem.getQuantity());
     	   }
        }
 //       Add orderItem into OrderItems hashMap
-       orderItems.put(orderItem.getProduct_id(), orderItem);
+       orderItems.put(orderItem.getProductId(), orderItem);
        
 //       Add OrderItems hashmap into session
        session.setAttribute("orderItems", gson.toJson(orderItems));

@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
-import com.bootcamp.tugas1.repositories.Product;
+import com.bootcamp.tugas1.entities.Product;
 import com.bootcamp.tugas1.repositories.ProductRepository;
 import com.bootcamp.tugas1.utils.DBUtil;
 

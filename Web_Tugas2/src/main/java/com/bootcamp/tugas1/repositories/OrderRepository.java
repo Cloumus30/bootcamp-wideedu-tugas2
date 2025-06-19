@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.bootcamp.tugas1.entities.Order;
+import com.bootcamp.tugas1.entities.OrderItem;
+
 public class OrderRepository {
 	protected Connection connection;
 	
@@ -20,7 +23,7 @@ public class OrderRepository {
 		String orderItemQuery = "INSERT INTO order_items (product_id, product_name, type, price, quantity) VALUES (?, ?, ?, ?, ?)";
 		
 		PreparedStatement preparedStatementOrder = this.connection.prepareStatement(orderQuery, Statement.RETURN_GENERATED_KEYS);
-		preparedStatementOrder.setString(1, order.getCustomer_name());
+		preparedStatementOrder.setString(1, order.getCustomerName());
 		preparedStatementOrder.setString(2, order.getAddress());
 		preparedStatementOrder.setDouble(3, order.countTotalPrice());
 		result = preparedStatementOrder.executeUpdate();
@@ -33,9 +36,9 @@ public class OrderRepository {
 		
 		if(result > 0) {
 			PreparedStatement preparedStatementOrderItems = this.connection.prepareStatement(orderItemQuery);
-			for (OrderItem orderItem : order.orderItems) {
+			for (OrderItem orderItem : order.getOrderItems()) {
 				preparedStatementOrderItems.setInt(1, orderId);
-				preparedStatementOrderItems.setString(2, orderItem.getProduct_name());
+				preparedStatementOrderItems.setString(2, orderItem.getproductName());
 				preparedStatementOrderItems.setString(3, orderItem.getType());
 				preparedStatementOrderItems.setDouble(4, orderItem.getPrice());
 				preparedStatementOrderItems.setInt(5, orderItem.getQuantity());

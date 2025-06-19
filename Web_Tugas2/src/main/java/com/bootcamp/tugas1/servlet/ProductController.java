@@ -17,7 +17,7 @@ import java.util.Set;
 
 import javax.naming.NamingException;
 
-import com.bootcamp.tugas1.repositories.Product;
+import com.bootcamp.tugas1.entities.Product;
 import com.bootcamp.tugas1.service.ProductService;
 import com.bootcamp.tugas1.service.TypeService;
 import com.bootcamp.tugas1.utils.DBUtil;
