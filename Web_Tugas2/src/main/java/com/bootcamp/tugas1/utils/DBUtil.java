@@ -12,8 +12,8 @@ public class DBUtil {
 	
 	public static Connection getConnection() throws NamingException, SQLException {
 		Context initCtx = new InitialContext();
-		Context envCtx = (Context) initCtx.lookup("java:comp/env");
-		DataSource ds = (DataSource) envCtx.lookup("jdbc/ecommerceDB");
+//		Context envCtx = (Context) initCtx.lookup("java:comp/env");
+		DataSource ds = (DataSource) initCtx.lookup("jdbc/edu");
 
 		Connection conn = ds.getConnection();
 		System.out.println("Connected To Database");
