@@ -1,5 +1,6 @@
 package com.bootcamp.tugas1.servlet;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,7 +31,8 @@ import com.google.gson.JsonObject;
 @WebServlet("/products")
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    @Inject
+    ProductService service;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,7 +46,7 @@ public class ProductController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		ProductService service;
+//		ProductService service;
 		String dispatcherName = "";
 		
 		if("form-add".equals(action)) {
@@ -64,7 +66,7 @@ public class ProductController extends HttpServlet {
 	        
 	        List<Product> products;
 			try {
-				service = new ProductService();
+//				service = new ProductService();
 				products = service.findAll();
 				
 //				Get Writer
@@ -76,14 +78,14 @@ public class ProductController extends HttpServlet {
 	                writer.println(product.getName()+", "+product.getType().getName()+", "+product.getPrice());
 	            }
 	            
-			} catch (SQLException | NamingException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 	        
 		}else if("form-view".equals(action)) {
 			try {
 				TypeService typeService = new TypeService();
-				service = new ProductService();
+//				service = new ProductService();
 				int productId = Integer.parseInt(request.getParameter("product"));
 				
 				request.setAttribute("types", typeService.findAll());
@@ -96,9 +98,9 @@ public class ProductController extends HttpServlet {
 			dispatcherName = "ProductViewForm.jsp";
 		} else {
 			try {
-				service = new ProductService();
+//				service = new ProductService();
 				request.setAttribute("products", service.findAll());
-			} catch (SQLException | NamingException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			dispatcherName = "ProductListCatalog.jsp";
@@ -118,7 +120,7 @@ public class ProductController extends HttpServlet {
 		String isUpdate = request.getParameter("is_update");
 		
 		try {
-			ProductService service = new ProductService();
+//			ProductService service = new ProductService();
 			if("1".equals(isDelete)) {
 				int productId = Integer.parseInt(request.getParameter("product_id"));
 				service.delete(productId);
@@ -141,7 +143,7 @@ public class ProductController extends HttpServlet {
 				
 				service.insert(product);
 			}
-		} catch (NamingException | SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
